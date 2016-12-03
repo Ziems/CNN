@@ -418,7 +418,7 @@ def conv_forward_naive(x, w, b, conv_param):
   P = conv_param['pad']
 
   # Add padding to each image
-  x_pad = np.pad(x, ((0,), (0,), (P,), (P,)), 'constant')
+  x_pad = np.pad(x, ((0,0), (0,0), (P,P), (P,P)), 'constant')
   # Size of the output
   Hh = 1 + (H + 2 * P - HH) / S
   Hw = 1 + (W + 2 * P - WW) / S
@@ -458,7 +458,7 @@ def conv_backward_naive(dout, cache):
   #############################################################################
   x, w, b, conv_param = cache
   P = conv_param['pad']
-  x_pad = np.pad(x, ((0,), (0,), (P,), (P,)), 'constant')
+  x_pad = np.pad(x, ((0,0), (0,0), (P,P), (P,P)), 'constant')
 
   N, C, H, W = x.shape
   F, C, HH, WW = w.shape
